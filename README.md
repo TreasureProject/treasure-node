@@ -2,6 +2,8 @@
 
 This repository contains a Docker Compose setup for running a PostgreSQL database and an external node service. The setup is designed to be used with a specific external node version, and it configures the PostgreSQL instance with custom settings tailored for performance.
 
+The Zksync External Node [Docs](https://github.com/matter-labs/zksync-era/blob/main/docs/src/guides/external-node/00_quick_start.md) is a great source of information if deeper node customization is desired.
+
 ## Prerequisites
 
 - Docker
