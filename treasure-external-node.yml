@@ -1,5 +1,23 @@
 version: "3.2"
 services:
+  prometheus:
+    image: prom/prometheus:v2.35.0
+    volumes:
+      - mainnet-prometheus:/prometheus
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    expose:
+      - 9090
+  grafana:
+    image: grafana/grafana:9.3.6
+    volumes:
+      - mainnet-grafana:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+    ports:
+      - "127.0.0.1:3000:3000"
   postgres:
     image: "postgres:14"
     command: >
@@ -40,6 +58,8 @@ services:
       - "127.0.0.1:3060:3060"
       - "127.0.0.1:3061:3061"
       - "127.0.0.1:3081:3081"
+      # - "0.0.0.0:3054:3054" # consensus public port
+      # - "127.0.0.1:5000:5000"
     volumes:
       - mainnet-rocksdb:/db
     expose:
@@ -65,3 +85,5 @@ services:
 volumes:
   mainnet-postgres: {}
   mainnet-rocksdb: {}
+  mainnet-prometheus: {}
+  mainnet-grafana: {}
