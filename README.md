@@ -45,7 +45,7 @@ The Zksync External Node [Docs](https://github.com/matter-labs/zksync-era/blob/m
 
 ### 2. External Node
 
-- **Image:** `matterlabs/external-node:2.0-v24.16.0`
+- **Image:** `matterlabs/external-node:2.0-v26.1.0`
 - **Depends on:** PostgreSQL service (ensures the service starts after PostgreSQL is healthy)
 - **Ports:**
   - `3060` (HTTP)
